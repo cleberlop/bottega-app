@@ -1,1 +1,12 @@
-Hi
+<div id="rooms-page">
+  <div class="container rooms-container">
+    <div class="row title-row">
+      <div class="col-md-12 col-sm-12 col-xs-12">Room Reservations</div>
+    </div>
+    <div class="row calendar-row">
+      <% @rooms.each do |room| %>
+      <%= render partial: "rooms_display", locals: {room: room} %>
+      <% end %>
+    </div>
+  </div>
+</div>
