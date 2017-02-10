@@ -1,3 +1,24 @@
 $( document ).ready(function() {
-	$('#calendar').fullCalendar({});   
+	$('#calendar').fullCalendar({
+        events: 		window.location.href,
+        eventClick: function(calEvent, jsEvent, view) {
+							        $('#new_event_modal').modal('show');
+							        $('#event_name').val(calEvent.title);
+							        $('#event_start_time').val(moment(calEvent.start._i).format("YYYY-MM-DD[T]hh:mm"));
+							        $('#event_end_time').val(moment(calEvent.end._i).format("YYYY-MM-DD[T]hh:mm"));
+							        $('event_description').val(calEvent.description);
+							        
+
+	    }
+	});
+
+	$('#event_modal_btn').on('click', function() {
+    $('#event_name').val("");
+    $('#event_start_time').val("");
+    $('#event_end_time').val("");
+    $('event_description').val("");
+	})
+	   
 });
+
+
