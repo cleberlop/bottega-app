@@ -5,19 +5,17 @@ class RoomsController < ApplicationController
 
 	def show
 		@event = Event.new
-	 @events = Event.all.map do |event|
+	 	@events = Event.all.map do |event|
 	  	{
-	  				 id: event.id,
-             title: event.name,
-             start: event.start_time,
-             end: event.end_time
-         }
+				id: event.id,
+				title: event.name,
+				start: event.start_time,
+				end: event.end_time
+       }
 	 end
 	 respond_to do |format|
 	 	format.html
 	 	format.json {render json: @events}
-
-
 	 end
 	end
 
@@ -27,6 +25,7 @@ class RoomsController < ApplicationController
 
 	def new_event
 		@event = Event.new(event_params)
+
 		@event.start_time = DateTime.parse(event_params[:start_time])
 		@event.end_time = DateTime.parse(event_params[:end_time])
 		@event.save
