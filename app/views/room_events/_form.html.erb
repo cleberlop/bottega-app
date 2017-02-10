@@ -12,6 +12,8 @@
 	<%= f.label :description %>
 	<%= f.text_field :description %>
 
+	<%= f.hidden_field :room_id, value: @event.room_id %>	
+
 	<%= f.submit %>
 	<%#= btn element. if @event.persisted? %>
 

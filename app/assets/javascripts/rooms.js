@@ -7,6 +7,7 @@ $( document ).ready(function() {
 							        $('#event_start_time').val(moment(calEvent.start._i).format("YYYY-MM-DD[T]HH:mm"));
 							        $('#event_end_time').val(moment(calEvent.end._i).format("YYYY-MM-DD[T]HH:mm"));
 							        $('event_description').val(calEvent.description);
+							        // room_id.val(calEvent.room_id);
 							        
 
 	    }
@@ -17,6 +18,7 @@ $( document ).ready(function() {
     $('#event_start_time').val("");
     $('#event_end_time').val("");
     $('event_description').val("");
+    // room_id.val("");
 	})
 	   
 });
