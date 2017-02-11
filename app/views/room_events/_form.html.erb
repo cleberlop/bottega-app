@@ -1,0 +1,20 @@
+<%= form_for @event, url:new_event_path do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :start_time %>
+	<%= f.datetime_field :start_time %>
+
+	<%= f.label :end_time %>
+	<%= f.datetime_field :end_time %>
+
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+
+	<%= f.hidden_field :room_id, value: @event.room_id %>	
+
+	<%= f.submit %>
+	<%#= btn element. if @event.persisted? %>
+
+<% end %>
