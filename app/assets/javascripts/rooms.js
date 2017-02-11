@@ -8,7 +8,7 @@ $( document ).ready(function() {
 							        $('#event_end_time').val(moment(calEvent.end._i).format("YYYY-MM-DD[T]HH:mm"));
 							        $('event_description').val(calEvent.description);
 							        // room_id.val(calEvent.room_id);
-							        
+
 
 	    }
 	});
@@ -20,7 +20,7 @@ $( document ).ready(function() {
     $('event_description').val("");
     // room_id.val("");
 	})
-	   
+
 });
 
 
