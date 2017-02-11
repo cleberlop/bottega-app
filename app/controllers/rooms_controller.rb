@@ -6,7 +6,8 @@ class RoomsController < ApplicationController
 
 	def show
 		@event = RoomEvent.new
-	 	@events = RoomEvent.all.map do |event|
+    @event.room_id = params[:id]
+	 	@events = RoomEvent.where(room_id: params[:id]).map do |event|
 	  	{
 				id: event.id,
 				title: event.name,
@@ -26,13 +27,15 @@ class RoomsController < ApplicationController
 	end
 
 	def new_event
+    @room = Room.find(event_params[:room_id])
 		@event = RoomEvent.new(event_params)
+    @event.user = current_user
 
-		@event.start_time = DateTime.parse(event_params[:start_time])
-		@event.end_time = DateTime.parse(event_params[:end_time])
-		@event.save
-
-		redirect_to :back
+		if @event.save
+		  redirect_to :back
+    else
+      redirect_to room_path(@room), flash: { error: @event.errors }
+    end  
 	end
 
 	def create
@@ -42,6 +45,6 @@ class RoomsController < ApplicationController
 	private
 
 	def event_params
-		params.require(:event).permit(:name, :start_time, :end_time, :description)
+		params.require(:room_event).permit(:name, :start_time, :end_time, :description, :room_id)
 	end
 end

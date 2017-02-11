@@ -16,13 +16,7 @@ $(document).ready(function() {
 		minTime: "08:00:00",
 		maxTime: "22:00:00",
 		slotLabelInterval: '02:00:00',
-		events: [
-      <%= room.events.today.each do |event| %>{
-			id: <%= event.id %>,
-			title: <%= event.name %>,
-			start: <%= event.start_time %>,
-			end: <%= event.end_time %>,
-		} <% end %>],
+		events: '<%= room_path(room) %>',
 		allDaySlot: false,
 		defaultView: 'agendaDay'
 	});
